@@ -34,7 +34,7 @@ app.use(passport.session())
 /* AuthRoute() is a function and we pass the initiated express object as argument */
 authRoutes(app);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 /* The Express Server will run at PORT : 5000 */
 
 app.listen(PORT);
