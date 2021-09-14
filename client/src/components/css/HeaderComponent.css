@@ -1,0 +1,49 @@
+.navbar{
+    /* position : fixed; */
+    width: 100%;
+  }
+.navbar-nav > li{
+    padding-left:30px;
+    padding-right:30px;
+  }
+
+.navbar-nav > div{
+  padding-left : 30px;
+  padding-right: 30px;
+}
+
+nav li:hover{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+/* .bg-custom-1 {
+  
+} */
+
+.bg-custom-2 {
+  background-color: #17491a;
+  background-image: linear-gradient(90deg, #17491a 0%, #F76B1C 100%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* nav div:hover{
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+} */
+  

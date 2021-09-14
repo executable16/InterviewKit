@@ -31,25 +31,22 @@ passport.use(new GoogleStrategy({
     proxy : true
     },  
         /* Receives a callback with accessToken, profile Information and all */
-        (accessToken, refreshToken, profile, done) => {
-
-            User.findOne({ googleId : profile.id})
-                .then((existingUser) => {
-                    if(existingUser){
-                        // We already have this user, he/she is Signing In.
-                        // This done() tells passport, we are done and complete.
-                        done(null,existingUser); 
-                    }else{
-                        // New User trying to Sign Up !
-                        new User({ googleId : profile.id, Name : profile.displayName }).save()
-                            .then((user) => {
-                                done(null,user)
-                            })
-                    }
-                })
-                .catch(err => console.log("Error at persisting user into database", err))
-            
-            /* save() is done to persist the model into database */
+        async (accessToken, refreshToken, profile, done) => {
+            try{
+                const existingUser = await User.findOne({ googleId : profile.id})
+                        if(existingUser){
+                            // We already have this user, he/she is Signing In.
+                            // This done() tells passport, we are done and complete.
+                            done(null,existingUser); 
+                        }else{
+                            // New User trying to Sign Up !
+                            const user = await new User({ googleId : profile.id, Name : profile.displayName }).save()
+                             /* save() is done to persist the model into database */
+                            done(null,user);
+                        }
+            }catch(err){
+                console.log("Error at persisting user into database", err)
+            }  
         }
     )
 )

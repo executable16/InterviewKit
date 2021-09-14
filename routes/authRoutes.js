@@ -20,17 +20,21 @@ module.exports = (app) => {
     }))
 
     /* "/auth/google/callback" is the callbackURL, i.e passports takes control and hence provides us the access token and all */
-    app.get('/auth/google/callback', passport.authenticate('google'))
-
+    app.get('/auth/google/callback', 
+        passport.authenticate('google'),
+        (req, res) => {
+            res.redirect('/dashboard')
+        }
+    
+    )
 
     app.get('/api/current_user', (req,res) => {
         res.send(req.user)
     })
 
     app.get('/api/logout', (req, res) => {
-        const name = req.user.Name;
         req.logout();
-        res.send(name + " Logged Out !")
+        res.redirect('/')
     })
 
 

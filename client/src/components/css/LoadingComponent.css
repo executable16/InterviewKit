@@ -1,0 +1,40 @@
+.Loader {
+    text-align: center;
+  }
+  
+  .Loader-logo {
+    height: 30vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .Loader-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .Loader-header {
+    background-color: #282c34;
+    /* background-color: rgba(197, 28, 28, 0.527); */
+    min-height: 92.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .Loader-link {
+    color: #61dafb;
+  }
+  
+  @keyframes Loader-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
